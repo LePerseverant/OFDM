@@ -17,4 +17,5 @@ Veuillez considérer le schéma en blocs suivant, qui englobe les blocs fondamen
 ![OFDM_channel](OFDM.png)
 
 ___réaliser par___: __Redouane Benarif__
+
 ___encadré par___: __Professeur Fouad Aytouna__
