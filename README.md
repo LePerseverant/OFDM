@@ -15,3 +15,6 @@ Dans ce projet, nous allons explorer les bases d'un système OFDM du côté émi
 Veuillez considérer le schéma en blocs suivant, qui englobe les blocs fondamentaux du système OFDM :
 
 ![OFDM_channel](OFDM.png)
+
+                                                                                                                                                              ___réaliser par___: __Redouane Benarif__
+                                                                                                                                                              ___encadré par___: __Professeur Fouad Aytouna__
