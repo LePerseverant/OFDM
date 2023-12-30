@@ -5,7 +5,7 @@
 
 Dans ce projet, nous allons explorer les bases d'un système OFDM du côté émission et réception. L'OFDM (multiplexage par répartition orthogonale de la fréquence) est un système multicarrier largement utilisé dans diverses transmissions sans fil comme LTE, WiMAX, DVB-T et DAB. Le principe clé d'un système multicarrier implique la division d'un flux de données à haut débit en plusieurs sous-porteuses étroites à débit réduit.
 
-### Cette approche présente plusieurs avantages :
+## Cette approche présente plusieurs avantages :
 
 1. La durée du symbole étant inversement proportionnelle au débit de symboles, chaque sous-porteuse présente des symboles relativement longs. Ces symboles prolongés sont résistants aux problèmes tels que l'affaiblissement par trajets multiples, courant dans les systèmes sans fil.
 
@@ -16,29 +16,24 @@ Veuillez considérer le schéma en blocs suivant, qui englobe les blocs fondamen
 
 ![OFDM_channel](OFDM.png)
 
-# Titre : Compréhension des systèmes OFDM - Analyse de l'émetteur et du récepteur
-
 ## Aperçu :
 Ce cahier Jupyter offre une exploration approfondie du système de multiplexage par répartition orthogonale de la fréquence (OFDM), couvrant ses composants fondamentaux, ses opérations et ses avantages. Le cahier examine à la fois les aspects de l'émetteur et du récepteur d'OFDM, en mettant en lumière son application dans divers systèmes de communication sans fil tels que LTE, WiMAX, DVB-T et DAB.
 
-## Table des matières :
-1. Introduction à l'OFDM
-2. Avantages de l'OFDM
-3. Composants de l'émetteur :
+## Code Blocks :
+- Composants de l'émetteur :
    - Génération des sous-porteuses
    - Mappage des données aux sous-porteuses
    - Insertion des porteuses pilotes
    - Transformée de Fourier inverse rapide (IFFT)
    - Ajout de préfixe cyclique
    - Transmission du signal
-4. Composants du récepteur :
+- Composants du récepteur :
    - Réception du signal
    - Suppression du préfixe cyclique
    - Transformée de Fourier rapide (FFT)
    - Démappage des sous-porteuses
    - Estimation du canal à l'aide des porteuses pilotes
    - Récupération des données
-5. Conclusion
 
 ## Bibliothèques utilisées :
 - NumPy
@@ -54,8 +49,7 @@ Ce cahier Jupyter offre une exploration approfondie du système de multiplexage 
 Ce cahier sert de ressource pédagogique pour comprendre les blocs de base d'un système OFDM. Il peut être utilisé à des fins d'apprentissage, d'expérimentation avec différents paramètres et pour acquérir des informations sur le fonctionnement d'OFDM.
 
 ## Remerciements :
-- Un sincère remerciement au ***Professeur*** **Fouad Aytouna** pour ses précieuses contributions, conseils et soutien tout au long.
-- 
+- Un sincère remerciement au **Professeur Fouad Aytouna** pour ses précieuses contributions, conseils et soutien tout au long.
 ## Informations sur l'auteur :
 - Nom : **[Redouane Benarif]**
 - Contact : **[redouanebenarif@gmail.com]**
