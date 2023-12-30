@@ -1,3 +1,6 @@
+![OFDM_channel](OFDM.png)
+img[alt=OFDM_channel] { width: 200px; }
+
 Dans ce projet, nous allons explorer les bases d'un système OFDM du côté émission et réception. L'OFDM (multiplexage par répartition orthogonale de la fréquence) est un système multicarrier largement utilisé dans diverses transmissions sans fil comme LTE, WiMAX, DVB-T et DAB. Le principe clé d'un système multicarrier implique la division d'un flux de données à haut débit en plusieurs sous-porteuses étroites à débit réduit.
 
 Cette approche présente plusieurs avantages :
@@ -9,4 +12,5 @@ Cette approche présente plusieurs avantages :
 - Les systèmes multicarriers facilitent l'allocation efficace des ressources entre plusieurs utilisateurs en attribuant différentes sous-porteuses à différents utilisateurs.
 Veuillez considérer le schéma en blocs suivant, qui englobe les blocs fondamentaux du système OFDM :
 
-![alt text](https://github.com/LePerseverant/OFDM/blob/main/OFDM.png?raw=true)
+![OFDM_channel](OFDM.png)
+img[alt=OFDM_channel]
