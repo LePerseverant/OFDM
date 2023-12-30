@@ -1,4 +1,4 @@
-![ENSA_Logo](ENSA_Logo.png =250x100)
+![ENSA_Logo](ENSA_Logo.png)
 Dans ce projet, nous allons explorer les bases d'un système OFDM du côté émission et réception. L'OFDM (multiplexage par répartition orthogonale de la fréquence) est un système multicarrier largement utilisé dans diverses transmissions sans fil comme LTE, WiMAX, DVB-T et DAB. Le principe clé d'un système multicarrier implique la division d'un flux de données à haut débit en plusieurs sous-porteuses étroites à débit réduit.
 
 Cette approche présente plusieurs avantages :
