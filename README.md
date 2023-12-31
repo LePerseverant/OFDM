@@ -22,11 +22,71 @@ Ce cahier Jupyter offre une exploration approfondie du système de multiplexage 
 ## Code Blocks :
 - Composants de l'émetteur :
    - Génération des sous-porteuses
+     ```python
+     K = 64 # number of OFDM subcarriers
+     CP = K//4  # length of the cyclic prefix: 25% of the block
+     P = 8 # number of pilot carriers per OFDM block
+     pilotValue = 3+3j # The known value each pilot transmits
+     allCarriers = np.arange(K)  # indices of all subcarriers ([0, 1, ... K-1])
+      
+     pilotCarriers = allCarriers[::K//P] # Pilots is every (K/P)th carrier.
+      
+     # For convenience of channel estimation, let's make the last carriers also be a pilot
+     pilotCarriers = np.hstack([pilotCarriers, np.array([allCarriers[-1]])])
+     P = P+1 
+      
+     # data carriers are all remaining carriers
+     dataCarriers = np.delete(allCarriers, pilotCarriers)
+     ```
    - Mappage des données aux sous-porteuses
+     ```python
+     def Mapping(bits):
+        return np.array([mapping_table[tuple(b)] for b in bits])
+     QAM = Mapping(bits_SP)
+     print ("First 5 QAM symbols and bits:")
+     print (bits_SP[:5,:])
+     print (QAM[:5])
+     ```
    - Insertion des porteuses pilotes
+   ```python
+   def OFDM_symbol(QAM_payload):
+      symbol = np.zeros(K, dtype=complex) # the overall K subcarriers
+      symbol[pilotCarriers] = pilotValue  # allocate the pilot subcarriers 
+      symbol[dataCarriers] = QAM_payload  # allocate the pilot subcarriers
+      return symbol
+   OFDM_data = OFDM_symbol(QAM)
+   print ("Number of OFDM carriers in frequency domain: ", len(OFDM_data))
+   ```
    - Transformée de Fourier inverse rapide (IFFT)
+   ```python
+   def IDFT(OFDM_data):
+      return np.fft.ifft(OFDM_data)
+   OFDM_time = IDFT(OFDM_data)
+   print ("Number of OFDM samples in time-domain before CP: ", len(OFDM_time))
+   ```
    - Ajout de préfixe cyclique
+   ```python
+   def addCP(OFDM_time):
+      cp = OFDM_time[-CP:]               # take the last CP samples ...
+      return np.hstack([cp, OFDM_time])  # ... and add them to the beginning
+   OFDM_withCP = addCP(OFDM_time)
+   print ("Number of OFDM samples in time domain with CP: ", len(OFDM_withCP))
+   ```
    - Transmission du signal
+   ```python
+   def channel(signal):
+      convolved = np.convolve(signal, channelResponse)
+      signal_power = np.mean(abs(convolved**2))
+      sigma2 = signal_power * 10**(-SNRdb/10)  # calculate noise power based on signal power and SNR
+    
+      print ("RX Signal power: %.4f. Noise power: %.4f" % (signal_power, sigma2))
+    
+      # Generate complex noise with given variance
+      noise = np.sqrt(sigma2/2) * (np.random.randn(*convolved.shape)+1j*np.random.randn(*convolved.shape))
+      return convolved + noise
+   OFDM_TX = OFDM_withCP
+   OFDM_RX = channel(OFDM_TX)
+   ```
 - Composants du récepteur :
    - Réception du signal
    - Suppression du préfixe cyclique
